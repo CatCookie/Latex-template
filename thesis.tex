@@ -1,0 +1,186 @@
+\input{praeambel.tex} % Importiere die Einstellungen aus der Präambel
+
+\begin{document} % hier beginnt der eigentliche Inhalt
+\bstctlcite{IEEE:BSTcontrol} % Fix für Zitatstyle
+\pagenumbering{Roman} % große Römische Seitenummerierung
+\pagestyle{empty}
+
+% Titelseite
+%\clearscrheadings\clearscrplain
+
+\begin{center}
+
+\begin{Huge} 
+Hochschule für Studiengänge \\
+\end{Huge}
+
+\begin{Large}
+Fakultät für Sachen und Dinge \\
+\end{Large}
+
+\vspace{20mm}
+
+\begin{Large}
+[TITEL]
+
+\vspace{2cm}
+ 
+[ENGLISCHER TITEL]
+
+\end{Large}
+
+
+
+\vspace{1cm}
+
+MASTERARBEIT\\
+
+\vspace{4.5cm}
+
+[NAME] \\
+Matrikel-Nummer 1111111 \\
+
+\vspace{4cm}
+
+Prüfer: Prof. Dr. Chris P. Bacon\\
+
+
+\end{center}
+\clearpage
+
+\pagestyle{useheadings} % normale Kopf- und Fußzeilen für den Rest
+
+\chapter*{Erklärung}
+Hiermit erkläre ich, dass ich die Masterarbeit selbständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen oder Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet habe.
+\vspace{3cm}
+
+Ort, Datum \hspace{5cm} Unterschrift
+
+\chapter*{Zusammenfassung}
+
+In dieser Masterarbeit wird erforscht welche Auswirkungen Bla und Blubb auf Dinge haben.
+
+\listoftodos
+
+\tableofcontents % Inhalt
+
+
+\chapter{Auflistung}
+\pagenumbering{arabic} % ab jetzt die normale arabische Nummerierung
+
+
+\begin{itemize}
+	\item[-] bla
+	\item[-] blubb
+	\item[-] usw
+\end{itemize}
+
+
+\chapter{Zitate}
+Behauptung und Quelle. \cite{google}
+\todo{Mehr Quellen}
+\missingfigure{hier muss noch ein Bild rein }
+
+\chapter{Bilder}
+
+\image{useCase}{scale=.9}{Anwendungsfalldiagramm}
+
+\chapter{Codelistings}
+
+
+
+\begin{python}[Starten einer Suche in DomainSearch.py]{suchstart}
+	def perform_search(name):
+	with threading.Lock():
+	# Perform one search for the given domain.
+	name = name.strip()
+	out.print_search_started(name)
+	
+	db = database.db()
+	searchID = db.insert_search(name)
+	db.close_connection()
+	
+	sched = scheduler.Scheduler()
+	sched.find_modules()
+	sched.start_modules(searchID, name)
+\end{python}
+
+
+\vspace{6mm}
+\begin{lstlisting}[caption=DNS Auflösung von cs.hm.edu, label=lst.dnsDig, ]
+cs.hm.edu.	1800	IN	NS	ns.e-technik.fh-muenchen.de.
+cs.hm.edu.	1800	IN	NS	ns.hm.edu.
+cs.hm.edu.	72791	IN	A   129.187.244.60
+cs.hm.edu.	14260	IN	MX	10 mailrelay2.lrz.de.
+cs.hm.edu.	14260	IN	MX	10 mailrelay1.lrz.de.
+\end{lstlisting}
+
+
+\chapter{Tabellen}
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{ l c }
+			\toprule
+			\textbf{Modul} & \textbf{Durchschnittslaufzeit in Sekunden}\\
+			\midrule   
+			DNSresolver            & 0,314 \\
+			DomainAge               & 0,495 \\
+			GeoIP                   & 2,195 \\
+			GoogleSafeBrowsingAPI   & 0,145 \\
+			GoogleSearch            & 1,349 \\
+			Nmap                    & 4,836 \\
+			RobotsTxt               & 0,284 \\
+			Traceroute              & 10,026 \\
+			Typo                    & 0,583 \\
+			Whois                   & 0,166 \\
+			\midrule
+			\textbf{Alle Module}    & \textbf{10,043} \\
+			\bottomrule
+		\end{tabular}
+		\caption{Laufzeiten der einzelnen Module}\label{tab.laufzeit}
+	\end{center}
+\end{table}
+
+
+\begin{figure}[!hbt]
+	\begin{minipage}[!hbt]{5cm}
+		\centering
+		
+		\begin{tabular}{ l  c }
+			\toprule
+			\textbf{Anzahl Threads} & \textbf{Laufzeit}\\
+			& \textbf{in Sekunden}\\
+			\midrule
+			Sequenziell             & 531,27 \\
+			2                       & 260,67 \\
+			5                       & 106,77 \\
+			10                      & 69,02 \\
+			15                      & 70,53 \\
+			20                      & 66,48 \\
+			50                      & 62,94 \\
+			\bottomrule
+		\end{tabular}
+		
+	\end{minipage}
+	\hfill
+	\begin{minipage}[!hbt]{8.2cm}
+		\centering
+	
+		
+			\includegraphics[scale=0.6]{images/laufzeiten}			 
+		
+	\end{minipage}
+	\caption{Anzahl der Threads im Verhältnis zu Laufzeit}\label{fig.laufzeitListe}
+\end{figure}
+
+
+
+\listoffigures
+\lstlistoflistings
+\listoftables
+
+\bibliographystyle{ieeetran}
+\bibliography{bibliographie}
+
+\end{document}
